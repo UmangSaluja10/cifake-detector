@@ -292,7 +292,10 @@
     formData.append("file", selectedFile);
 
     try {
-      const res = await fetch("/predict", { method: "POST", body: formData });
+      const res = await fetch("https://cifake-detector.onrender.com/predict", {
+        method: "POST",
+        body: formData
+      });
       if (!res.ok) {
         const err = await res.json().catch(() => ({}));
         throw new Error(err.detail || "Something went wrong.");
